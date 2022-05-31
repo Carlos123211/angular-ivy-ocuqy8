@@ -1,4 +1,36 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<form [formGroup]="form" (ngSubmit)="onSumit()">
+  <div class="content">
+    <div>
+      <span>Nombre:</span>
+      <input name="name" type="text" formControlName="name" />
+      <div>
+        <span>Edad:</span>
+        <input name="number" type="number" formControlName="number" />
+      </div>
+      <div>
+        <span>Sexo:</span>
+        <select name="sex" formControlName="sex">
+          <option></option>
+          <option>Masculino</option>
+          <option>Femenino</option>
+        </select>
+      </div>
+      <div>
+        <span>Pokemon:</span>
+        <select name="pokemon" formControlName="pokemon">
+          <option></option>
+          <option *ngFor="let poke of pokemons" [value]="poke.name">
+            {{ poke.name }}
+          </option>
+          <option>Femenino</option>
+        </select>
+      </div>
+      <input
+        class="values"
+        [disabled]="!form.valid"
+        type="submit"
+        value="Obtener Valores"
+      />
+    </div>
+  </div>
+</form>
